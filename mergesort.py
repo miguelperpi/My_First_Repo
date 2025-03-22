@@ -1,53 +1,52 @@
-def mergesort(arr, depth=0):
-    if len(arr) > 1:
-        mid = len(arr) // 2
-        left = arr[:mid]
-        right = arr[mid:]
 
-        print(f"{'  ' * depth}m: {mid}")
-        print(f"{'  ' * depth}array: {left}")
-        mergesort(left, depth + 1)
-        print(f"{'  ' * depth}array: {right}")
-        mergesort(right, depth + 1)
+def debug_print(debug_msg=None, **kwargs):
 
-        i = j = k = 0
+    if debug_msg:
+        print(debug_msg)
 
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                arr[k] = left[i]
-                i += 1
-            else:
-                arr[k] = right[j]
-                j += 1
-            k += 1
+    for key, value in kwargs.items():
+        print("{}: {}".format(key, value))
 
-        while i < len(left):
-            arr[k] = left[i]
-            i += 1
-            k += 1
 
-        while j < len(right):
-            arr[k] = right[j]
-            j += 1
-            k += 1
+def mergesort(array):
+    if len(array) <= 1:
+        return array
 
-        print(f"{'  ' * depth}Merging...")
-        print(f"{'  ' * depth}left: {left}")
-        print(f"{'  ' * depth}right: {right}")
-        print(f"{'  ' * depth}merged: {arr}")
+    m = len(array) // 2
 
-# Entrada de datos
-input_str = input("Enter numbers, separated by ',': ")
-input_list = input_str.split(',')
-value_list = [int(x.strip()) for x in input_list]
-array = value_list.copy()
+    left = mergesort(array[:m])
+    right = mergesort(array[m:])
 
-print(f"Enter numbers, separated by ',': input_list: {input_list}")
-print(f"value_list: {value_list}")
-print(f"array: {array}")
+    return merge(left, right)
 
-# Ordenar el array
-mergesort(array)
 
-# Imprimir resultado final
-print(array)
+def merge(left, right):
+    merged = []
+
+    while len(left) > 0 and len(right) > 0:
+        if left[0] <= right[0]:
+            merged.append(left.pop(0))
+        else:
+            merged.append(right.pop(0))
+
+    if len(left) > 0:
+        merged += left
+    else:
+        merged += right
+
+    return merged
+
+
+if __name__ == "__main__":
+    input_str = input("Enter numbers, separated by ',': ")
+    input_list = input_str.split(",")
+    value_list = []
+    for x in input_list:
+        try:
+            value_list.append(int(x))
+        except ValueError as err:
+            print("Invalid input.")
+            quit(1)
+
+    sorted_list = mergesort(value_list)
+    print(sorted_list)
