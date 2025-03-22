@@ -1,11 +1,14 @@
-def mergesort(arr):
+def mergesort(arr, depth=0):
     if len(arr) > 1:
         mid = len(arr) // 2
         left = arr[:mid]
         right = arr[mid:]
 
-        mergesort(left)
-        mergesort(right)
+        print(f"{'  ' * depth}m: {mid}")
+        print(f"{'  ' * depth}array: {left}")
+        mergesort(left, depth + 1)
+        print(f"{'  ' * depth}array: {right}")
+        mergesort(right, depth + 1)
 
         i = j = k = 0
 
@@ -28,15 +31,23 @@ def mergesort(arr):
             j += 1
             k += 1
 
+        print(f"{'  ' * depth}Merging...")
+        print(f"{'  ' * depth}left: {left}")
+        print(f"{'  ' * depth}right: {right}")
+        print(f"{'  ' * depth}merged: {arr}")
+
 # Entrada de datos
-input_list = input("Enter numbers, separated by ',': ").split(',')
-value_list = [int(x) for x in input_list]
+input_str = input("Enter numbers, separated by ',': ")
+input_list = input_str.split(',')
+value_list = [int(x.strip()) for x in input_list]
 array = value_list.copy()
+
+print(f"Enter numbers, separated by ',': input_list: {input_list}")
+print(f"value_list: {value_list}")
+print(f"array: {array}")
 
 # Ordenar el array
 mergesort(array)
 
-# Imprimir la salida esperada
-print(f"Enter numbers, separated by ',': input_list: {input_list}")
-print(f"value_list: {value_list}")
-print(f"array: {array}")
+# Imprimir resultado final
+print(array)
