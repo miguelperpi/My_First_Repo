@@ -4,7 +4,7 @@ def mergesort(arr, depth=0):
         left = arr[:mid]
         right = arr[mid:]
 
-        # Mensajes de depuración (como en el ejemplo)
+        # Mensajes de depuración
         print(f"{'  ' * depth}m: {mid}")
         print(f"{'  ' * depth}array: {left}")
         mergesort(left, depth + 1)
@@ -45,7 +45,7 @@ input_list = [x.strip() for x in input_str.split(',')]
 value_list = [int(x) for x in input_list]
 array = value_list.copy()
 
-# Imprimir información inicial (como en el ejemplo)
+# Imprimir información inicial
 print(f"Enter numbers, separated by ',': input_list: {input_list}")
 print(f"value_list: {value_list}")
 print(f"array: {array}")
