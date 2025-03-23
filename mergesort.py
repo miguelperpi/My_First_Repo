@@ -38,6 +38,8 @@ def mergesort(arr, depth=0):
         print(f"{'  ' * depth}left: {left}")
         print(f"{'  ' * depth}right: {right}")
         print(f"{'  ' * depth}merged: {arr}")
+          print(f"array: {array}")  # <-- Muestra el array actual
+        print(f"m: {m}") 
 
 # Entrada de datos
 input_str = input("Enter numbers, separated by ',': ")
@@ -49,6 +51,10 @@ array = value_list.copy()
 print(f"Enter numbers, separated by ',': input_list: {input_list}")
 print(f"value_list: {value_list}")
 print(f"array: {array}")
+print(f"Merging...")      # <-- Muestra que se está fusionando
+        print(f"left: {left}")   # <-- Muestra la parte izquierda
+        print(f"right: {right}") # <-- Muestra la parte derecha
+        print(f"merged: {array}") # <-- Muestra el array fusionado
 
 # Llamar a mergesort
 mergesort(array)
