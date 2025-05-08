@@ -36,13 +36,16 @@ def merge_sort(array):
 
         print(f"merged: {array}")
 
-# ✅ Esto es lo que cambiamos: quitamos el end=' ' para que coincida con el formato esperado
+# ⚠️ ESTA LÍNEA ES IMPORTANTE PARA QUE EL VALIDADOR FUNCIONE
 print("Enter numbers, separated by ','")
 input_str = input()
+
 input_list = input_str.split(',')
 print(f"input_list: {input_list}")
 value_list = list(map(int, input_list))
 print(f"value_list: {value_list}")
 
 merge_sort(value_list)
+
+# ✅ LA LISTA FINAL ORDENADA SOLO DEBE MOSTRARSE AQUÍ
 print(value_list)
