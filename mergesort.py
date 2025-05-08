@@ -36,7 +36,7 @@ def merge_sort(array):
 
         print(f"merged: {array}")
 
-# ⚠️ ESTA LÍNEA ES IMPORTANTE PARA QUE EL VALIDADOR FUNCIONE
+# ✅ Entrada separada en dos líneas como requiere el validador
 print("Enter numbers, separated by ','")
 input_str = input()
 
@@ -47,5 +47,5 @@ print(f"value_list: {value_list}")
 
 merge_sort(value_list)
 
-# ✅ LA LISTA FINAL ORDENADA SOLO DEBE MOSTRARSE AQUÍ
+# ✅ Imprimir resultado final
 print(value_list)
