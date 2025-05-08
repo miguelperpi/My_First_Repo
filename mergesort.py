@@ -36,7 +36,8 @@ def merge_sort(array):
 
         print(f"merged: {array}")
 
-print("Enter numbers, separated by ',':", end=' ')
+# ✅ Esto es lo que cambiamos: quitamos el end=' ' para que coincida con el formato esperado
+print("Enter numbers, separated by ','")
 input_str = input()
 input_list = input_str.split(',')
 print(f"input_list: {input_list}")
