@@ -1,43 +1,47 @@
 def merge_sort(array):
+    print(f"array: {array}")
     if len(array) > 1:
         m = len(array) // 2
-        left = array[:m]
-        right = array[m:]
+        print(f"m: {m}")
+        left_half = array[:m]
+        right_half = array[m:]
 
-        print(f"array: {array}")  # <-- Muestra el array actual
-        print(f"m: {m}")          # <-- Muestra el punto de división
-
-        merge_sort(left)
-        merge_sort(right)
+        merge_sort(left_half)
+        merge_sort(right_half)
 
         i = j = k = 0
 
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                array[k] = left[i]
+        print("Merging...")
+        print(f"left: {left_half}")
+        print(f"right: {right_half}")
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                array[k] = left_half[i]
                 i += 1
             else:
-                array[k] = right[j]
+                array[k] = right_half[j]
                 j += 1
             k += 1
 
-        while i < len(left):
-            array[k] = left[i]
+        while i < len(left_half):
+            array[k] = left_half[i]
             i += 1
             k += 1
 
-        while j < len(right):
-            array[k] = right[j]
+        while j < len(right_half):
+            array[k] = right_half[j]
             j += 1
             k += 1
 
-        print(f"Merging...")      # <-- Muestra que se está fusionando
-        print(f"left: {left}")   # <-- Muestra la parte izquierda
-        print(f"right: {right}") # <-- Muestra la parte derecha
-        print(f"merged: {array}") # <-- Muestra el array fusionado
+        print(f"merged: {array}")
 
-if __name__ == "__main__":
-    input_list = input("Enter numbers, separated by ',': ").split(',')
-    value_list = [int(x) for x in input_list]
-    merge_sort(value_list)
-    print(value_list)
+print("Enter numbers, separated by ',':", end=' ')
+input_str = input()
+input_list = input_str.split(',')
+print(f"input_list: {input_list}")
+value_list = list(map(int, input_list))
+print(f"value_list: {value_list}")
+
+merge_sort(value_list)
+print(value_list)
