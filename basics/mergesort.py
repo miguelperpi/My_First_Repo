@@ -1,52 +1,49 @@
+def merge_sort(array):
+    print(f"array: {array}")
+    if len(array) > 1:
+        m = len(array) // 2
+        print(f"m: {m}")
+        left_half = array[:m]
+        right_half = array[m:]
 
-def debug_print(debug_msg=None, **kwargs):
+        merge_sort(left_half)
+        merge_sort(right_half)
 
-    if debug_msg:
-        print(debug_msg)
+        i = j = k = 0
 
-    for key, value in kwargs.items():
-        print("{}: {}".format(key, value))
+        print("Merging...")
+        print(f"left: {left_half}")
+        print(f"right: {right_half}")
 
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                array[k] = left_half[i]
+                i += 1
+            else:
+                array[k] = right_half[j]
+                j += 1
+            k += 1
 
-def mergesort(array):
-    if len(array) <= 1:
-        return array
+        while i < len(left_half):
+            array[k] = left_half[i]
+            i += 1
+            k += 1
 
-    m = len(array) // 2
+        while j < len(right_half):
+            array[k] = right_half[j]
+            j += 1
+            k += 1
 
-    left = mergesort(array[:m])
-    right = mergesort(array[m:])
+        print(f"merged: {array}")
 
-    return merge(left, right)
+print("Enter numbers, separated by ','")
+input_str = input()
 
+input_list = input_str.split(',')
+print(f"input_list: {input_list}")
+value_list = list(map(int, input_list))
+print(f"value_list: {value_list}")
 
-def merge(left, right):
-    merged = []
+merge_sort(value_list)
 
-    while len(left) > 0 and len(right) > 0:
-        if left[0] <= right[0]:
-            merged.append(left.pop(0))
-        else:
-            merged.append(right.pop(0))
-
-    if len(left) > 0:
-        merged += left
-    else:
-        merged += right
-
-    return merged
-
-
-if __name__ == "__main__":
-    input_str = input("Enter numbers, separated by ',': ")
-    input_list = input_str.split(",")
-    value_list = []
-    for x in input_list:
-        try:
-            value_list.append(int(x))
-        except ValueError as err:
-            print("Invalid input.")
-            quit(1)
-
-    sorted_list = mergesort(value_list)
-    print(sorted_list)
+print(value_list)
